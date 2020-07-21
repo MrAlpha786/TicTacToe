@@ -1,1 +1,4 @@
 # TicTacToe
+
+## Prerequisites
+python3
