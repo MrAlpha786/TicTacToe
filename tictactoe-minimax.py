@@ -28,7 +28,7 @@ class TicTacToe:
         # Randomly choose a symbol to play.
         self.player = choice(self.symbols)
 
-        # Assign second player if two player mode.
+        # Assign second player.
         self.opponentmove = (self.playermove
                              if twoplayers else self.aimove)
 
@@ -188,9 +188,9 @@ class TicTacToe:
     def minimax(self, depth=0):
         """Recursively finds the best playable move."""
 
-        # This plays the game for both player and AI and
-        # assign a score to each game. Then return the
-        # best move based on that score(minimum score).
+        # This function plays the game for both player
+        # and AI and assign a score to each game. Then
+        # return the best move based on that score.
 
         # AI will try to minimize the best score
         if self.player == self.o:
@@ -199,7 +199,7 @@ class TicTacToe:
             best = 10
 
         # Base cases
-        # Return best score if anyone winning.
+        # Return best score if anyone is winning.
         # Best Score is 10 - depth of the recursion.
         if self.validate():
             if self.player == self.x:
@@ -231,22 +231,23 @@ class TicTacToe:
                 # For non-AI player new best score is the
                 # val return by above recursive call and
                 # best move is the move played above, if
-                # val is less than the previous best score.
+                # val is less than the current best score.
                 if val < best:
                     best, bestmove = val, move
             else:
                 # For AI new best score is the val return
                 # by above recursive call and best move is
                 # the move played above, if val is greater
-                # than the previous best score.
+                # than the current best score.
                 if val > best:
                     best, bestmove = val, move
+
         # Return best score and move.
         return best, bestmove
 
 
 if __name__ == '__main__':
-    # Create TicTacToe object with AI player as game.
+    # Create TicTacToe object as game.
     game = TicTacToe()
     # Call help() to print instructions.
     game.help()
